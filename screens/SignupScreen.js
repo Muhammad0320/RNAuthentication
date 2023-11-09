@@ -1,5 +1,7 @@
 import { useState } from "react";
 import AuthContent from "../components/Auth/AuthContent";
+import { useAuth } from "../context/AuthContext";
+
 import { signupApi } from "../utils/auth";
 import LoadingOverlay from "../components/ui/LoadingOverlay";
 import { Alert } from "react-native";
@@ -10,8 +12,11 @@ function SignupScreen() {
   const handleSignup = async ({ email, password }) => {
     setIsAuthenticating(true);
 
+    const { authenticate } = useAuth();
+
     try {
-      await signupApi(email, password);
+      const token = await signupApi(email, password);
+      authenticate(token);
     } catch (error) {
       Alert.alert(
         "Authentication failed",
