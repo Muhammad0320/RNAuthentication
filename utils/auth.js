@@ -13,13 +13,13 @@ const authenticate = async (mode, email, password) => {
   return res.data;
 };
 
-export const signup = async (email, password) => {
+export const signupApi = async (email, password) => {
   const res = await authenticate("signUp", email, password);
 
   return res;
 };
 
-export const login = async (email, password) => {
+export const loginApi = async (email, password) => {
   const res = await authenticate("signInWithPassword", email, password);
 
   return res;
