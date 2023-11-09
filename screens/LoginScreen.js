@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { loginApi } from "../utils/auth";
 import LoadingOverlay from "../components/ui/LoadingOverlay";
 import { Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function LoginScreen() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -17,6 +18,7 @@ function LoginScreen() {
     try {
       const token = await loginApi(email, password);
       authenticate(token);
+      AsyncStorage.setItem("token", token);
     } catch (error) {
       Alert.alert(
         "Authentication failed",
