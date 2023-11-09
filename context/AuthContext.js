@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext({
   token: "",
-  isAuthenticated,
+  isAuthenticated: false,
   authenticate: () => {},
   logout: () => {},
 });
@@ -26,7 +26,17 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
+    <AuthContext.Provider
+      value={{
+        token,
+        isAuthenticated: !!token,
+        logout,
+        authenticate,
+      }}
+    >
+      {" "}
+      {children}{" "}
+    </AuthContext.Provider>
   );
 };
 
