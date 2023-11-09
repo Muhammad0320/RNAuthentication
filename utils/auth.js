@@ -18,3 +18,9 @@ export const signup = async (email, password) => {
 
   return res;
 };
+
+export const login = async (email, password) => {
+  const res = await authenticate("signInWithPassword", email, password);
+
+  return res;
+};
