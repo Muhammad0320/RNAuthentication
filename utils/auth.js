@@ -12,6 +12,8 @@ const authenticate = async (mode, email, password) => {
     returnSecureToken: true,
   });
 
+  console.log(res.data);
+
   return res.data;
 };
 
