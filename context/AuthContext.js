@@ -10,12 +10,12 @@ const AuthContext = createContext({
 export const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
-  const logout = () => {
-    setToken(null);
+  authenticate = (token) => {
+    setToken(token);
   };
 
-  authenticate = (token) => {
-    if (token) setToken(token);
+  const logout = () => {
+    setToken(null);
   };
 
   const value = {
@@ -26,17 +26,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        token,
-        isAuthenticated: !!token,
-        logout,
-        authenticate,
-      }}
-    >
-      {" "}
-      {children}{" "}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={value}> {children} </AuthContext.Provider>
   );
 };
 
