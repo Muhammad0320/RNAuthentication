@@ -9,10 +9,9 @@ import { Alert } from "react-native";
 function SignupScreen() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
+  const { authenticate } = useAuth();
   const handleSignup = async ({ email, password }) => {
     setIsAuthenticating(true);
-
-    const { authenticate } = useAuth();
 
     try {
       const token = await signupApi(email, password);
