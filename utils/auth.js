@@ -12,19 +12,19 @@ const authenticate = async (mode, email, password) => {
     returnSecureToken: true,
   });
 
-  console.log(res.data);
+  const { idToken: token } = res.data;
 
-  return res.data;
+  return token;
 };
 
 export const signupApi = async (email, password) => {
-  const res = await authenticate("signUp", email, password);
+  const token = await authenticate("signUp", email, password);
 
-  return res;
+  return token;
 };
 
 export const loginApi = async (email, password) => {
-  const res = await authenticate("signInWithPassword", email, password);
+  const token = await authenticate("signInWithPassword", email, password);
 
-  return res;
+  return token;
 };
