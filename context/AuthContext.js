@@ -33,6 +33,8 @@ export const AuthContextProvider = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
 
+  console.log(context);
+
   if (!context)
     throw new Error("Auth context was used outside the error provider");
 

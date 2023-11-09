@@ -16,6 +16,7 @@ function SignupScreen() {
     try {
       const token = await signupApi(email, password);
       authenticate(token);
+      AsyncStorage.setItem("token", token);
     } catch (error) {
       Alert.alert(
         "Authentication failed",
