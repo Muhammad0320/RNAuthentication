@@ -75,7 +75,7 @@ function Root() {
     };
 
     fetchToken();
-  });
+  }, [token]);
 
   if (isFetchingToken) {
     return <AppLoading />;
