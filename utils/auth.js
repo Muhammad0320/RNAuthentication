@@ -12,3 +12,9 @@ const authenticate = async (mode, email, password) => {
 
   return res.data;
 };
+
+export const signup = async (email, password) => {
+  const res = await authenticate("signUp", email, password);
+
+  return res;
+};
